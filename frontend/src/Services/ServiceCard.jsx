@@ -1,7 +1,7 @@
 import React from "react";
 import "./ServiceCard.css"
 
-const ServiceCard = (item) => {
+const ServiceCard = ({item}) => {
 
     const {imgUrl,title,desc} = item
 

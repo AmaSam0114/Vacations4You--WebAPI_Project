@@ -10,12 +10,12 @@ const nav_links=[
         display:'Home'
     },
     {
-        path:'/about',
-        display:'About'
+        path:'/activity',
+        display:'Activity Reservations'
     },
     {
-        path:'/tours',
-        display:'Tours'
+        path:'/Cruise',
+        display:'Cruise Reservations'
     }, 
 ]
 

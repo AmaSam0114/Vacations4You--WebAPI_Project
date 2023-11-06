@@ -7,6 +7,8 @@ import img3 from '../assets/images/img3.jpg'
 import world from '../assets/images/world.png'
 import Subtitle from "../Shared/Subtitle";
 import SearchBar from '../Shared/SearchBar'
+import ServiceList from "../Services/ServiceList";
+
 const Home = () => {
     return <>
     <section>
@@ -48,9 +50,24 @@ const Home = () => {
                     <h5 className="service__subtitle">what we serve</h5>
                     <h2 className="service__title">We offer our best services</h2>
                 </Col>
+                <ServiceList/>
             </Row>
         </Container>
     </section>
+
+    {/* ------------------------- featured packages--------------------------------*/}
+
+<section>
+    <Container>
+        <Row>
+            <Col lg='12' className="mb-5">
+                <Subtitle/>
+            </Col>
+        </Row>
+    </Container>
+</section>
+
+
     </>
     
 };
