@@ -8,6 +8,7 @@ import world from '../assets/images/world.png'
 import Subtitle from "../Shared/Subtitle";
 import SearchBar from '../Shared/SearchBar'
 import ServiceList from "../Services/ServiceList";
+import FeaturedTourList from "../components/Featured_Tours/FeaturedTourList";
 
 const Home = () => {
     return <>
@@ -61,8 +62,11 @@ const Home = () => {
     <Container>
         <Row>
             <Col lg='12' className="mb-5">
-                <Subtitle/>
+                <Subtitle subtitle={'Explore'}/>
+                <h2 className="featured__tour-title">Our featured tours</h2>
+
             </Col>
+            <FeaturedTourList/>
         </Row>
     </Container>
 </section>
