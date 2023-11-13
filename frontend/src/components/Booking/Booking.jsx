@@ -1,19 +1,101 @@
-import React from "react";
+import React,{useRef,useState} from "react";
 import './Booking.css'
 import {Form ,FormGroup,ListGroup,ListGroupItem,Button} from 'reactstrap'
+import Select from 'react-select'
+import {useNavigate} from 'react-router-dom'
+
+const options = [
+    { value: 'Honeymoon', label: 'Honeymoon' },
+    { value: 'Beach holiday', label: 'Beach holiday' },
+    { value: 'Wildlife excursion', label: 'Wildlife excursion' },
+    { value: 'Family Holiday ', label: 'Family Holiday ' }
+
+  ]
 
 
+const Booking = ({tour,avgRating}) => {
 
-const Booking = ({tour}) => {
+    const[credentials,setCredentials] = useState({
+        userId:'01',
+        userEmail:"",
+        fullName:'',
+        phone:'',
+        guestSize: 1,
+        bookAt:'',
+    })
 
+const navigate = useNavigate()
+    const specialtyRef = useRef('')
 const {price,reviews} = tour
+const handleChange = e =>{
+setCredentials(prev =>({...prev,[e.target.id]:e.target.value}))
+}
 
-    return <div className="booking">
+const serviceFee = 1000
+const totalAmount = Number(price) * Number(credentials.guestSize) + Number(serviceFee)
+
+//send to the data to server
+const handleClick = e=>{
+e.preventDefault()
+
+navigate("/thank-you")
+}
+
+    return( <div className="booking">
         <div className="booking_top d-flex align-items-center justify-content-between">
             <h3>Rs.{price}<span>/Per Person</span></h3>
+            <span className="tour__rating de-flex align-items-center ">
+             <i class="ri-star-fill" ></i> 
+             {avgRating === 0 ? null : avgRating } ({reviews?.length})
+             </span>
         </div>
+{/* --------------------Booking Form ----------------------- */}
+<div className="booking__form">
+    <h5>Information</h5>
+    <Form className="booking__info-form" onSubmit={handleClick}>
+<FormGroup>
+    <input type="text" placeholder="Full Name" id="fullName" 
+    required onChange={handleChange}/>
+</FormGroup>
+<FormGroup>
+    <input type="number" placeholder="Phone Number" id="phone" 
+    required onChange={handleChange}/>
+</FormGroup>
+<FormGroup className="d-flex align-item-center gap-3">
+    <input type="date" placeholder="" id="bookAt" 
+    required onChange={handleChange}/>
+    
+</FormGroup>
+<FormGroup>
+<input type="number" placeholder="No of guests" id="guestSize" 
+    required onChange={handleChange}/>
+</FormGroup>
+<FormGroup className="option" >
+<Select options={options} placeholder="Select Specialty" ref={specialtyRef}/>                
+ </FormGroup>
+    </Form>
 
-    </div>;
+</div>
+<div className="booking__bottom">
+<ListGroup>
+    <ListGroupItem className="border-0 px-0">
+<h5 className="d-flex align-items-center gap-1">Rs.{price} <i class="ri-close-line"></i>one person </h5>
+<span>Rs.{price}</span>
+    </ListGroupItem>
+    <ListGroupItem className="border-0 px-0">
+<h5>Service Charge</h5>
+<span>Rs.{serviceFee}</span>
+    </ListGroupItem>
+    <ListGroupItem className="border-0 px-0 total">
+<h5>Total </h5>
+<span>Rs.{totalAmount}</span>
+    </ListGroupItem>
+</ListGroup>
+<Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+    Book Now
+</Button>
+</div>
+    </div>)
 };
 
 export default Booking;

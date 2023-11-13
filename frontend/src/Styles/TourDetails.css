@@ -81,7 +81,10 @@
     font-size: 1rem;
     margin-bottom: 0;
 }
-.review__item span{
+.review__item span i{
     font-size: 1.2rem;
     color: var(--secondary-color);
+}
+.review__item span{
+    font-weight: 500;
 }
