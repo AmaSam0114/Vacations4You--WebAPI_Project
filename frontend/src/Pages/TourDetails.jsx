@@ -4,6 +4,7 @@ import { Container,Row,Col,Form,ListGroup } from "reactstrap";
 import { useParams } from "react-router-dom";
 import tourData from '../assets/data/tours'
 import calculateAvgRating from "../Utils/avgRating";
+import avatar from '../assets/images/avatar.jpg'
 
 const TourDetails = () => {
 
@@ -50,7 +51,45 @@ const {totalRating,avgRating} = calculateAvgRating(reviews)
                         </div>
                            <p>{desc}</p>
                         </div>
+                           <div className="tour__reviews mt-4">
+                           <h4>Reviews({reviews?.length}reviews)</h4>
+                           <Form>
+                            <div className="d-flex align-items-center gap-3 mb-4 rating__group">
+                                <span><i class="ri-star-fill"></i></span>
+                                <span><i class="ri-star-fill"></i></span>
+                                <span><i class="ri-star-fill"></i></span>
+                                <span><i class="ri-star-fill"></i></span>
+                                <span><i class="ri-star-fill"></i></span>
 
+                            </div>
+                            <div className="review__input">
+                                <input type="text" placeholder="Share your thoughts" />
+                                <button className="btn primary__btn text-white" type="submit">Submit</button>
+
+                            </div>
+                           </Form>
+                             <ListGroup className="user__reviews">
+                              {
+                                   reviews?.map(review =>(
+                                    <div className="review__item">
+                                        <img src={avatar} alt=""/>
+                                        <div className="w-100">
+                                         <div className="d-flex align-items-center-justify-content-between">
+                                            <div>
+                                                <h5>Amy</h5>
+                                            </div>
+                                            <span className="d-flex alin-items-center">
+                                            <i class="ri-star-fill"></i>
+                                            </span>
+
+                                         </div>
+                                        </div>
+                                    </div>
+                                   ))
+                              }
+                             </ListGroup>
+
+                           </div>
                     </div>
                 </Col>
             </Row>
