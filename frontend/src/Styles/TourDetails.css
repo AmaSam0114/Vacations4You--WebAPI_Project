@@ -77,3 +77,11 @@
     border-radius: 50px;
     object-fit: cover;
 }
+.review__item h5{
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+.review__item span{
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
