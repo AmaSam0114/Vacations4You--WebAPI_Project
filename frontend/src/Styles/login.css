@@ -49,7 +49,7 @@
     outline: none;
 }
 .auth__btn{
-    background: var(--secondary-color) !important;
+    background: black !important;
     width: 100%;
     color: #fff  !important;
 }
