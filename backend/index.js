@@ -5,10 +5,17 @@ import cors from 'cors'
 import cookieParser from "cookie-parser";
 import tourRoute from './routers/tours.js'
 import userRoute from './routers/users.js'
+import authRoute from './routers/auth.js'
+import reviewRoute from './routers/review.js'
+import bookingRoute from './routers/booking.js'
 
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
+const corOptions = {
+    origin:true,
+    Credential:true
+}
 
 
 //database connection
@@ -28,10 +35,13 @@ const connect = async()=>{
 
 //middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors(corOptions))
 app.use(cookieParser())
-app.use('/tours', tourRoute)
-app.use('/users', userRoute)
+app.use('/api/v1/tours', tourRoute)
+app.use('/api/v1/users', userRoute)
+app.use('/api/v1/auth', authRoute)
+app.use('/api/v1/review', reviewRoute)
+app.use('/api/v1/booking', bookingRoute)
 
 app.listen(port, ()=>{
 
