@@ -14,17 +14,17 @@ const options = [
 const SearchBar = () => {
 
     const locationRef = useRef('')
-    const distanceRef = useRef(0)
+    const durationceRef = useRef(0)
     const maxgroupSizeRef = useRef(0)
     const specialtyRef = useRef('')
 
     const searchhandler = ()=>{
         const location =locationRef.current.value
-        const distance = distanceRef.current.value
+        const duration = durationceRef.current.value
         const maxgroup = maxgroupSizeRef.current.value
         const specialty = specialtyRef.current.value
 
-        if(location=='' || distance=='' || maxgroup==''){
+        if(location==='' ||  maxgroup==='' || duration==='' || specialty===''){
             return alert(" All fields are required")
         }
 
@@ -47,8 +47,8 @@ const SearchBar = () => {
                 <span>
                 <i class="ri-map-pin-time-line"></i></span>   
          <div>
-                    <h1 className="Text">Distance</h1>
-                    <input type="number" placeholder="Distance k/m" ref={distanceRef}/>
+                    <h1 className="Text">Duration</h1>
+                    <input type="number" placeholder="No of Days" ref={durationceRef}/>
                 </div>
             </FormGroup>
             <FormGroup className="d-flex gap-3 form__group form__group-last">

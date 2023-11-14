@@ -10,6 +10,10 @@ const nav_links=[
         display:'Home'
     },
     {
+        path:'/tours',
+        display:'Tour'
+    },
+    {
         path:'/activity',
         display:'Activity Reservations'
     },
