@@ -2,6 +2,8 @@ import React,{useRef} from "react";
 import './SearchBar.css'
 import { Col,Form, FormGroup} from "reactstrap";
 import Select from 'react-select'
+import {BASE_URL} from './../Utils/config.js'
+import {useNavigate} from 'react-router-dom'
 
 const options = [
     { value: 'Honeymoon', label: 'Honeymoon' },
@@ -17,8 +19,9 @@ const SearchBar = () => {
     const durationceRef = useRef(0)
     const maxgroupSizeRef = useRef(0)
     const specialtyRef = useRef('')
+    const navigate = useNavigate()
 
-    const searchhandler = ()=>{
+    const searchhandler = async ()=>{
         const location =locationRef.current.value
         const duration = durationceRef.current.value
         const maxgroup = maxgroupSizeRef.current.value
@@ -27,6 +30,12 @@ const SearchBar = () => {
         if(location==='' ||  maxgroup==='' || duration==='' || specialty===''){
             return alert(" All fields are required")
         }
+
+const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&duration=${duration}&maxGroupSize=${maxgroup}&specialty=${specialty}`)
+
+if (!res.ok) alert('something went to wrong')
+const result = await res.json()
+navigate(`/tours/search?city=${location}&duration=${duration}&maxGroupSize=${maxgroup}&specialty=${specialty}`, {state:result.data})
 
 
     }
