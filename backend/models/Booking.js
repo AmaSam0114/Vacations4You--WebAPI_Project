@@ -9,6 +9,11 @@ const bookingSchema = new mongoose.Schema(
       type: String,
      
     },
+    tourName:{
+ type:String,
+ required:true
+
+    },
     fullname: {
       type: String,
       required: true,
@@ -18,12 +23,12 @@ const bookingSchema = new mongoose.Schema(
       required: true, 
     },
     phone:{
-        type: Number,
+        type: String,
       required: true, 
     },
     bookAt:{
         type: Date,
-      required: true, 
+      // required: true, 
     },
     specialty: {
         type: String,

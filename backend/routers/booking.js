@@ -1,8 +1,10 @@
 import express from 'express'
-import { verifyUser } from '../utilis/verifyToken.js'
-import { createBooking } from '../controllers/bookingController.js'
+//import { verifyUser } from '../utilis/verifyToken.js'
+import { createBooking, getAllBooking, getBooking } from '../controllers/bookingController.js'
 const router = express.Router()
 
-router.post('/',verifyUser, verifyUser,createBooking)
+router.post('/',createBooking)
+router.get('/:id',getBooking)
+router.get('/',getAllBooking)
 
 export default router
