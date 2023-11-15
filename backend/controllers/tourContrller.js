@@ -69,8 +69,6 @@ export const getSingleTour = async(req,res) => {
 //get all tour
 export const getAllTour = async(req,res) => {
 
-
-
     try {
     const tours = await Tour.find({})
     res.status(200).json({success:true,message:'successfully show all',
